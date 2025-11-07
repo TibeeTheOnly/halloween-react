@@ -1,6 +1,15 @@
 import { useState, useEffect } from 'react'
 import type { House } from '../types'
 
+/**
+ * Props a `HousesTable` komponenshez
+ *
+ * @property {boolean} loading - Jelzi, hogy a fő komponens éppen betöltési állapotban van-e
+ * @property {string | null} error - Hibaszöveg, ha a betöltés sikertelen
+ * @property {House[]} houses - A megjelenítendő házak listája
+ * @property {(id: number, inStock: boolean) => Promise<void>} onUpdateCandy - Callback a ház édesség státuszának frissítésére
+ * @property {boolean} isDarkMode - Téma állapota (sötét/világos)
+ */
 interface Props {
   loading: boolean
   error: string | null
@@ -65,6 +74,13 @@ export default function HousesTable({ loading, error, houses, onUpdateCandy, isD
       setLoadingId(null)
     }
   }
+
+  /**
+   * Kezeli a gombnyomásra induló műveletet: optimista UI frissítést alkalmaz,
+   * meghívja az `onUpdateCandy` callbacket, és visszaállítja az állapotot hiba esetén.
+   * @param {number} id - A ház azonosítója
+   * @param {boolean} inStock - Az új állapot (true = van édesség)
+   */
 
   const totalHouses = localHouses.length
   const housesWithCandy = localHouses.filter(h => h.candy_in_stock).length

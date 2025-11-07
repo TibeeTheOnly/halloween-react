@@ -1,5 +1,11 @@
 import { useState } from 'react'
 
+/**
+ * Props a `NewAddress` komponenshez
+ *
+ * @property {(name: string, address: string, allergenFree: string) => Promise<void>} onNewAddress - Callback amikor új ház kerül beküldésre
+ * @property {boolean} isDarkMode - Téma állapota (sötét/világos)
+ */
 interface Props {
   onNewAddress: (name: string, address: string, allergenFree: string) => Promise<void>
   isDarkMode: boolean
@@ -34,6 +40,12 @@ export default function NewAddress({ onNewAddress, isDarkMode }: Props) {
       setIsSubmitting(false)
     }
   }
+
+  /**
+   * Submit handler az új ház űrlaphoz.
+   * Ellenőrzi a bemenetet, meghívja az `onNewAddress` callbacket és visszaállítja a formot siker esetén.
+   * @param {React.FormEvent} e - Az esemény objektum
+   */
 
   const cardBg = isDarkMode ? 'rgba(40, 40, 60, 0.95)' : 'rgba(255,255,255,0.95)'
   const textClass = isDarkMode ? 'text-light' : 'text-dark'
