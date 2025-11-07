@@ -1,73 +1,45 @@
-# React + TypeScript + Vite
+# Halloween React (React + TypeScript + Vite)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This repository contains a small React + TypeScript app (Vite) used to track which houses have candy for Halloween.
 
-Currently, two official plugins are available:
+The app is intentionally minimal and demonstrates:
+- React + TypeScript with Vite
+- Simple fetch-based API client (configured via env var)
+- Small component structure (table + new address form)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Quick start
+1. Install dependencies:
 
-## React Compiler
+   npm install
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+2. Start dev server:
 
-## Expanding the ESLint configuration
+   npm run dev
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+3. Build for production:
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+   npm run build
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+Environment variables
+- The app expects an environment variable named `VITE_API_BASE_URL` pointing to the backend API base URL (e.g. `http://localhost:3000/houses`).
+  Create a `.env` file in the project root or export it in your shell. Example `.env`:
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+  VITE_API_BASE_URL=http://localhost:3000/houses
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Project structure (important files)
+- `src/api.ts` — small API helper and CRUD calls
+- `src/types.ts` — shared TypeScript types
+- `src/App.tsx` — main app component
+- `src/components/HousesTable.tsx` — list & actions
+- `src/components/NewAddress.tsx` — form to add a house
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Localization
+- This repo includes a Hungarian translation of the README: `README.hu.md`.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Contributing
+- Improve docs, add tests, or introduce i18n if you want to support multiple languages in the UI.
+
+License
+- This project is private by default. Update `package.json`/LICENSE as needed.
+
+If you'd like, I can also add a minimal i18n wiring (react-intl or react-i18next) so UI strings can be switched between English and Hungarian at runtime.

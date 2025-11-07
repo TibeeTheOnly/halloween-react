@@ -8,16 +8,16 @@ interface Props {
 export default function NewAddress({ onNewAddress, isDarkMode }: Props) {
   const [name, setName] = useState('')
   const [address, setAddress] = useState('')
-  const [allergenFree, setAllergenFree] = useState('None')
+  const [allergenFree, setAllergenFree] = useState('Nincs')
   const [isSubmitting, setIsSubmitting] = useState(false)
 
-  const allergenOptions = ['None', 'Gluten-free', 'Nut-free', 'Dairy-free', 'Vegan']
+  const allergenOptions = ['Nincs', 'Gluténmentes', 'Diómentes', 'Tejmentes', 'Vegán']
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     
     if (!name.trim() || !address.trim()) {
-      alert('Please fill in name and address')
+      alert('Kérlek töltsd ki a nevet és a címet')
       return
     }
 
@@ -44,19 +44,19 @@ export default function NewAddress({ onNewAddress, isDarkMode }: Props) {
       <div className="card-body">
         <h5 className={`card-title fw-bold mb-3 ${textClass}`}>
           <i className="bi bi-plus-circle me-2 text-success"></i>
-          Add New House
+          Új ház hozzáadása
         </h5>
         <form onSubmit={handleSubmit}>
           <div className="row g-3">
             <div className="col-md-4">
               <label htmlFor="houseName" className={`form-label small ${textClass}`}>
-                <i className="bi bi-house me-1"></i>House Name
+                <i className="bi bi-house me-1"></i>Ház neve
               </label>
               <input
                 type="text"
                 id="houseName"
                 className={`form-control ${inputClass}`}
-                placeholder="e.g., Smith Family"
+                placeholder="pl.: Kovács család"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 disabled={isSubmitting}
@@ -65,13 +65,13 @@ export default function NewAddress({ onNewAddress, isDarkMode }: Props) {
             </div>
             <div className="col-md-4">
               <label htmlFor="houseAddress" className={`form-label small ${textClass}`}>
-                <i className="bi bi-geo-alt me-1"></i>Address
+                <i className="bi bi-geo-alt me-1"></i>Cím
               </label>
               <input
                 type="text"
                 id="houseAddress"
                 className={`form-control ${inputClass}`}
-                placeholder="e.g., 123 Main St"
+                placeholder="pl.: Fő utca 123"
                 value={address}
                 onChange={(e) => setAddress(e.target.value)}
                 disabled={isSubmitting}
@@ -80,7 +80,7 @@ export default function NewAddress({ onNewAddress, isDarkMode }: Props) {
             </div>
             <div className="col-md-3">
               <label htmlFor="allergenFree" className={`form-label small ${textClass}`}>
-                <i className="bi bi-shield-check me-1"></i>Allergen Free
+                <i className="bi bi-shield-check me-1"></i>Allergén-mentes
               </label>
               <select
                 id="allergenFree"

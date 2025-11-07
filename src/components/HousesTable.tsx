@@ -21,9 +21,9 @@ export default function HousesTable({ loading, error, houses, onUpdateCandy, isD
     return (
       <div className="text-center py-5">
         <div className="spinner-border text-light" role="status">
-          <span className="visually-hidden">Loading...</span>
+          <span className="visually-hidden">Betöltés...</span>
         </div>
-        <p className="text-white mt-3">Loading houses...</p>
+        <p className="text-white mt-3">Házak betöltése...</p>
       </div>
     )
   }
@@ -32,7 +32,7 @@ export default function HousesTable({ loading, error, houses, onUpdateCandy, isD
     return (
       <div className="alert alert-danger shadow-sm" role="alert">
         <i className="bi bi-exclamation-triangle me-2"></i>
-        <strong>Error:</strong> {error}
+        <strong>Hiba:</strong> {error}
       </div>
     )
   }
@@ -41,7 +41,7 @@ export default function HousesTable({ loading, error, houses, onUpdateCandy, isD
     return (
       <div className="text-center py-5">
         <i className="bi bi-inbox text-white" style={{ fontSize: '3rem' }}></i>
-        <p className="text-white mt-3">No houses found</p>
+        <p className="text-white mt-3">Nincsenek házak</p>
       </div>
     )
   }
@@ -84,7 +84,7 @@ export default function HousesTable({ loading, error, houses, onUpdateCandy, isD
             <div className="card-body text-center py-3">
               <div className={`display-6 fw-bold ${summaryTextClass} mb-1`}>{totalHouses}</div>
               <div className={`small ${summaryMutedClass}`}>
-                <i className="bi bi-house-door me-1"></i>Total Houses
+                <i className="bi bi-house-door me-1"></i>Összes ház
               </div>
             </div>
           </div>
@@ -94,7 +94,7 @@ export default function HousesTable({ loading, error, houses, onUpdateCandy, isD
             <div className="card-body text-center py-3">
               <div className="display-6 fw-bold text-success mb-1">{housesWithCandy}</div>
               <div className={`small ${summaryMutedClass}`}>
-                <i className="bi bi-check-circle me-1"></i>Has Candy
+                <i className="bi bi-check-circle me-1"></i>Van édesség
               </div>
             </div>
           </div>
@@ -104,7 +104,7 @@ export default function HousesTable({ loading, error, houses, onUpdateCandy, isD
             <div className="card-body text-center py-3">
               <div className="display-6 fw-bold text-danger mb-1">{housesEmpty}</div>
               <div className={`small ${summaryMutedClass}`}>
-                <i className="bi bi-x-circle me-1"></i>Empty
+                <i className="bi bi-x-circle me-1"></i>Üres
               </div>
             </div>
           </div>
@@ -114,7 +114,7 @@ export default function HousesTable({ loading, error, houses, onUpdateCandy, isD
             <div className="card-body text-center py-3">
               <div className="display-6 fw-bold text-info mb-1">{percentageWithCandy}%</div>
               <div className={`small ${summaryMutedClass}`}>
-                <i className="bi bi-pie-chart me-1"></i>Stocked
+                <i className="bi bi-pie-chart me-1"></i>Készletben
               </div>
             </div>
           </div>
@@ -124,11 +124,11 @@ export default function HousesTable({ loading, error, houses, onUpdateCandy, isD
       <div className="mb-3">
         <h2 className="text-white fw-bold mb-1">
           <i className="bi bi-house-heart-fill me-2 text-warning"></i>
-          All Houses
+          Összes ház
         </h2>
         <p className="text-white-50 small mb-0">
           <i className="bi bi-phone me-1"></i>
-          Swipe to see more • Tap to update
+          Húzd az elemet a részletekhez • Koppints a frissítéshez
         </p>
       </div>
 
@@ -175,9 +175,9 @@ export default function HousesTable({ loading, error, houses, onUpdateCandy, isD
                     </div>
                     <div className="d-flex align-items-center text-white mb-2 small">
                       <i className="bi bi-hash me-2 text-warning"></i>
-                      <span>ID: {h.id}</span>
+                      <span>Azonosító: {h.id}</span>
                     </div>
-                    {h.allergen_free && (
+                      {h.allergen_free && (
                       <div className="d-flex align-items-center text-white small">
                         <i className="bi bi-shield-fill-check me-2 text-success"></i>
                         <span>{h.allergen_free}</span>
@@ -195,17 +195,17 @@ export default function HousesTable({ loading, error, houses, onUpdateCandy, isD
                     {isLoading ? (
                       <>
                         <span className="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
-                        Updating...
+                        Frissítés...
                       </>
                     ) : hasCandy ? (
                       <>
                         <i className="bi bi-dash-circle me-2"></i>
-                        Empty Candy
+                        Kiürítés
                       </>
                     ) : (
                       <>
                         <i className="bi bi-plus-circle me-2"></i>
-                        Fill Candy
+                        Feltöltés
                       </>
                     )}
                   </button>

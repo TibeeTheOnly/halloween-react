@@ -159,12 +159,12 @@ function App() {
         <div className="container-fluid px-3">
           <span className="navbar-brand mb-0 h1">
             <i className="bi bi-gift-fill text-warning me-2"></i>
-            🎃 Halloween Candy Tracker
+            🎃 Halloween édesség nyilvántartó
           </span>
           <button 
             onClick={toggleTheme}
             className="btn btn-sm btn-outline-light"
-            aria-label="Toggle theme"
+            aria-label="Téma váltása"
           >
             <i className={`bi ${isDarkMode ? 'bi-sun-fill' : 'bi-moon-fill'}`}></i>
           </button>
